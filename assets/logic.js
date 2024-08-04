@@ -18,3 +18,12 @@ function getComputerChoice () {
 }
 
 console.log(getComputerChoice())
+
+// function promts user for input, that input becomes playermove
+function getHumanChoice (){
+    let input=prompt("What will be your move player?:  ")
+    let playerMove = input
+    return playerMove
+}
+
+console.log (getHumanChoice())
