@@ -1,4 +1,4 @@
-// generate a random number then use to determine computer move
+// generate a random number then use to determine computer move/choice
 function getComputerChoice () {
     let randomNumber = Math.random()
     let computerMove = '';
@@ -15,6 +15,6 @@ function getComputerChoice () {
         computerMove = 'scissors'
         return computerMove
     }
-    
-    
-}console.log(getComputerChoice())
+}
+
+console.log(getComputerChoice())
