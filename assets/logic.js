@@ -40,16 +40,44 @@ function countScore (playerMove, computerMove) {
         computerScore += 0;
         result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: A Tie! The score for player is ${playerScore} and for computer is ${computerScore}`
     }
-    // what happens when playerMove is = rock
-    else if (playerMove == "rock" && computerMove == "paper") {
-        computerScore += 1
-        result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: computer wins! The score for player is ${playerScore} and for computer is ${computerScore}`
+    //  When playerMove = rock it checks whether computerMove = paper or scissors then runs according to computerMove!
+    else if (playerMove == "rock"){
+        if (computerMove == "paper") {
+            computerScore += 1
+        result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Computer wins! The score for player is ${playerScore} and for computer is ${computerScore}`
         }
-
-    else if (playerMove == "rock" && computerMove == "scissors") {
+        else if (computerMove == "scissors") {
             playerScore += 1
             result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Player wins! The score for player is ${playerScore} and for computer is ${computerScore}`
         }
+    }
+// When playerMove = paper it checks whether computerMove = rock or scissors then runs according to computerMove!
+    else if (playerMove == "paper"){
+        if (computerMove == "rock") {
+            playerScore += 1
+        result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Player wins! The score for player is ${playerScore} and for computer is ${computerScore}`
+        }
+        else if (computerMove == "scissors") {
+            computerScore+= 1
+            result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Computer wins! The score for player is ${playerScore} and for computer is ${computerScore}`
+        }
+    }
+
+    // When playerMove = scissors it checks whether computerMove = rock or paper then runs according to computerMove!
+    else if (playerMove == "scissors"){
+        if (computerMove == "rock") {
+            computerScore += 1
+        result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Computer wins! The score for player is ${playerScore} and for computer is ${computerScore}`
+        }
+        else if (computerMove == "paper") {
+            playerScore += 1
+            result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Player wins! The score for player is ${playerScore} and for computer is ${computerScore}`
+        }
+    }
+
+
+
+   
     return result
     }
 console.log(countScore(getHumanChoice(),getComputerChoice()))

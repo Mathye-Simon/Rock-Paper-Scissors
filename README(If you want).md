@@ -8,4 +8,6 @@ First version I want to create is going to be played in the console. I will prov
 Status:
 I am currently thinking of how to effectively check who wins and who loses.
 The first one I dealt with is the draw, which i just check if playerMove and computerMove are the same.
-Now, check if playermove = for example rock and computerMove = scissors player wins, playerScore += 1. Tested and it works so I will do the same logic for scissors and paper. One problem is that the score resets after each game
+Now, check if playermove = for example rock and computerMove = scissors player wins, playerScore += 1. Tested and it works so I will do the same logic for scissors and paper. One problem is that the score resets after each game. 
+
+Polished the code and added logic for other options. Turns out I dont even have to compare computerMove and playerMove! I figured that since I already know that when playerMove = for eg paper then if computerMove = eg scissors then computer wins. So I didnt have to compare I just use that concept for other moves as well!
