@@ -11,3 +11,6 @@ The first one I dealt with is the draw, which i just check if playerMove and com
 Now, check if playermove = for example rock and computerMove = scissors player wins, playerScore += 1. Tested and it works so I will do the same logic for scissors and paper. One problem is that the score resets after each game. 
 
 Polished the code and added logic for other options. Turns out I dont even have to compare computerMove and playerMove! I figured that since I already know that when playerMove = for eg paper then if computerMove = eg scissors then computer wins. So I didnt have to compare I just use that concept for other moves as well!
+
+Ok now a simple fix for the fact that it resets score after each game, currently it would be to create a loop for a fixed amount of games 5 times. Because the loop wont refresh the page we will still have our score! So for i = 0; i <= 5; i++; altenatively (in python i would use while i <= 5: i+=1).
+so while i is less than or = 5 i want it to loop the game each time displaying the result and asking for input. Sounds fun!

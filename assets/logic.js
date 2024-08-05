@@ -29,7 +29,7 @@ function getHumanChoice (){
 
 
 // decision of who wins and who loses
-function countScore (playerMove, computerMove) {
+function playMatch (playerMove, computerMove) {
     let playerScore = 0;
     let computerScore = 0;
 
@@ -80,7 +80,7 @@ function countScore (playerMove, computerMove) {
    
     return result
     }
-console.log(countScore(getHumanChoice(),getComputerChoice()))
+console.log(playMatch(getHumanChoice(),getComputerChoice()))
     //     else if (playerMove === "rock" && computerMove === "") {
     //         playerMove += 1
     //     }
