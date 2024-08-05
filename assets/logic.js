@@ -26,12 +26,12 @@ function getHumanChoice (){
     return playerMove
 }
 
-
-
+// I put them outside so that each time playMatch is called it doesnt reset
+let playerScore = 0;
+let computerScore = 0;
 // decision of who wins and who loses
 function playMatch (playerMove, computerMove) {
-    let playerScore = 0;
-    let computerScore = 0;
+
 
     let result = "";
     // when moves are the same the score doesnt increase or decrease, (optional)
@@ -77,10 +77,17 @@ function playMatch (playerMove, computerMove) {
 
 
 
-   
-    return result
+    console.log(result)
     }
-console.log(playMatch(getHumanChoice(),getComputerChoice()))
+
+
+// function for playing the game multiple matches
+function playGame(){
+    for (i = 1; i <= 5; i++) {
+        playMatch(getHumanChoice(),getComputerChoice())
+    }
+}
+console.log(playGame())
     //     else if (playerMove === "rock" && computerMove === "") {
     //         playerMove += 1
     //     }

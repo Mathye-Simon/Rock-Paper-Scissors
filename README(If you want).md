@@ -14,3 +14,5 @@ Polished the code and added logic for other options. Turns out I dont even have 
 
 Ok now a simple fix for the fact that it resets score after each game, currently it would be to create a loop for a fixed amount of games 5 times. Because the loop wont refresh the page we will still have our score! So for i = 0; i <= 5; i++; altenatively (in python i would use while i <= 5: i+=1).
 so while i is less than or = 5 i want it to loop the game each time displaying the result and asking for input. Sounds fun!
+
+It works, I was stuck with 6 loops for a minute until i realize i started at zero, so the loop is for (i = 1;i<=5;i++)!
