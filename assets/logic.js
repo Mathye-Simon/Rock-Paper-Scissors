@@ -81,15 +81,4 @@ function playMatch (playerMove, computerMove) {
     }
 
 
-// function for playing the game multiple matches
-function playGame(){
-    for (i = 1; i <= 5; i++) {
-        playMatch(getHumanChoice(),getComputerChoice())
-    }
-}
-console.log(playGame())
-    //     else if (playerMove === "rock" && computerMove === "") {
-    //         playerMove += 1
-    //     }
-    //     else if (playerMove === "") {}
-    // }
+
