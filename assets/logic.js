@@ -103,6 +103,16 @@ function handleEvent (event) {
             displayResult.textContent = result
         }
     }
+    
+    // declare winner
+    if (playerScore >= 5) {
+        displayResult.textContent = 'player wins'
+        playerScore = 0
+        computerScore = 0}
+    else if (playerScore >= 5) {
+        displayResult.textContent = 'computer wins'
+        playerScore = 0
+        computerScore = 0}
 }
 
 
