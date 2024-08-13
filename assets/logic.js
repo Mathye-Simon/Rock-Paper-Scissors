@@ -36,65 +36,76 @@ function handleEvent (event) {
         playerMove = 'paper'
     }
 
+    // get div to display result
+    let displayResult = document.querySelector('#displayResult')
 
     // compare moves
     computerMove = getComputerChoice()
     let result = "";
+    
     // when moves are the same the score doesnt increase or decrease, (optional)
     if (playerMove == computerMove) {
+
         playerScore += 0;
         computerScore += 0;
-        result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: A Tie! The score for player is ${playerScore} and for computer is ${computerScore}`
+        result = `Player move was: ${playerMove} and Computer move
+        was: ${computerMove}. The result is: A Tie! The score for
+        player is ${playerScore} and for computer is ${computerScore}`
+        displayResult.textContent = result
     }
     //  When playerMove = rock it checks whether computerMove = paper or scissors then runs according to computerMove!
     else if (playerMove == "rock"){
+
         if (computerMove == "paper") {
             computerScore += 1
-        result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Computer wins! The score for player is ${playerScore} and for computer is ${computerScore}`
+            result = `Player move was: ${playerMove} and Computer move
+            was: ${computerMove}. The result is: Computer wins! The score 
+            for player is ${playerScore} and for computer is ${computerScore}`
+            displayResult.textContent = result
         }
+
         else if (computerMove == "scissors") {
+
             playerScore += 1
-            result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Player wins! The score for player is ${playerScore} and for computer is ${computerScore}`
+            result = `Player move was: ${playerMove} and Computer
+            move was: ${computerMove}. The result is: Player wins!
+            The score for player is ${playerScore} and for computer
+            is ${computerScore}`
+            displayResult.textContent = result
         }
     }
 // When playerMove = paper it checks whether computerMove = rock or scissors then runs according to computerMove!
     else if (playerMove == "paper"){
+
         if (computerMove == "rock") {
             playerScore += 1
-        result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Player wins! The score for player is ${playerScore} and for computer is ${computerScore}`
+            result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Player wins! The score for player is ${playerScore} and for computer is ${computerScore}`
+            displayResult.textContent = result
         }
         else if (computerMove == "scissors") {
             computerScore+= 1
             result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Computer wins! The score for player is ${playerScore} and for computer is ${computerScore}`
+            displayResult.textContent = result
         }
     }
 
     // When playerMove = scissors it checks whether computerMove = rock or paper then runs according to computerMove!
     else if (playerMove == "scissors"){
+
         if (computerMove == "rock") {
             computerScore += 1
         result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Computer wins! The score for player is ${playerScore} and for computer is ${computerScore}`
+        displayResult.textContent = result
         }
         else if (computerMove == "paper") {
             playerScore += 1
             result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Player wins! The score for player is ${playerScore} and for computer is ${computerScore}`
+            displayResult.textContent = result
         }
     }
-
-
-
-    console.log(result)
-    
-
-    
 }
 
 
-
-// I put them outside so that each time playMatch is called it doesnt reset
-
-// decision of who wins and who loses
-// function playMatch (playerMove, computerMove) {
 
     
     
