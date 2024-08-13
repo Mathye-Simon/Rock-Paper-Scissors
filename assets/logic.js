@@ -17,22 +17,28 @@ function getComputerChoice () {
     }
 }
 
-
-
-// function promts user for input, that input becomes playermove
-function getHumanChoice (){
-    let input = prompt("What will be your move player?:  ")
-    let playerMove = input
-    return playerMove
-}
-
-// I put them outside so that each time playMatch is called it doesnt reset
 let playerScore = 0;
 let computerScore = 0;
-// decision of who wins and who loses
-function playMatch (playerMove, computerMove) {
+
+// determine playerMove and handle event
+let buttons = document.querySelectorAll('button')
+buttons.forEach((button) => {
+    button.addEventListener('click', handleEvent)
+})
+function handleEvent (event) {
+    if (event.target.id == 'scissors') {
+        playerMove = 'scissors'
+    }
+    else if (event.target.id == 'rock') {
+        playerMove = 'rock'
+    }
+    else if (event.target.id == 'paper') {
+        playerMove = 'paper'
+    }
 
 
+    // compare moves
+    computerMove = getComputerChoice()
     let result = "";
     // when moves are the same the score doesnt increase or decrease, (optional)
     if (playerMove == computerMove) {
@@ -78,7 +84,20 @@ function playMatch (playerMove, computerMove) {
 
 
     console.log(result)
-    }
+    
+
+    
+}
+
+
+
+// I put them outside so that each time playMatch is called it doesnt reset
+
+// decision of who wins and who loses
+// function playMatch (playerMove, computerMove) {
+
+    
+    
 
 
 
