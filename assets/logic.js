@@ -58,11 +58,11 @@ button.addEventListener('click',(event) => {
 // Initialized outside function scope to avoid reseting each time
 playerScore = 0;
 computerScore = 0;
+let numofTies = 0
 
 function playMatch(playerMove, computerMove) {
     // init
     let result = ''
-    let paragraph = document.createElement('p')
     const div = document.querySelector('#displayResult')
     const displayPlayerScore = document.querySelector('#playerScore')
     const displayComputerScore = document.querySelector('#computerScore')
@@ -74,6 +74,8 @@ function playMatch(playerMove, computerMove) {
             div.textContent = result
             displayPlayerScore.textContent = `Player Score:${playerScore}`
             displayComputerScore.textContent = `Computer Score:${computerScore}`
+            // when tied 3 times in a row
+            
         }
         if (playerMove == possibleOutcomes[index].move) {
             if (computerMove == possibleOutcomes[index].win){
@@ -82,7 +84,8 @@ function playMatch(playerMove, computerMove) {
                 div.textContent = result
                 displayPlayerScore.textContent = `Player Score:${playerScore}`
                 displayComputerScore.textContent = `Computer Score:${computerScore}`
-
+                // hidden logic
+                
                 
             }
             else if (computerMove == possibleOutcomes[index].loss) {
@@ -91,31 +94,44 @@ function playMatch(playerMove, computerMove) {
                 div.textContent = result
                 displayComputerScore.textContent = `Computer Score:${computerScore}`
                 displayPlayerScore.textContent = `Player Score:${playerScore}`
+                // HIDDEN
+                if (computerScore == 4) {
+                alert('CAREFULL COMPUTER IS 1 POINT FROM WINNING!!')
             }
 
+            }
+        }
+            
+            
+            
+            
 
+        
+    
+    
+    }
+        // who wins
+        if (playerScore >= 5) {
+            console.log('player wins')
+            playerScore = 0
+            computerScore = 0
+            div.textContent = ''
+            displayComputerScore.textContent = `Computer Score:${computerScore}`
+            displayPlayerScore.textContent = `Player Score:${playerScore}`
+            alert('Game set!! You Win! Awesome')
+            }
+
+        if (computerScore >= 5) {
+            console.log('Computer wins')
+            playerScore = 0
+            computerScore = 0
+            div.textContent = ''
+            displayComputerScore.textContent = `Computer Score:${computerScore}`
+            displayPlayerScore.textContent = `Player Score:${playerScore}`
+            alert('Game set!! Computer Wins! You..lose..')
         }
 
-
-            // who wins
-            if (playerScore >= 5) {
-                console.log('player wins')
-                playerScore = 0
-                computerScore = 0
-                alert('Game set!! You Win! Awesome')
-            }
-
-            if (computerScore >= 5) {
-                console.log('Computer wins')
-                playerScore = 0
-                computerScore = 0
-                alert('Game set!! Computer Wins! You..lose..')
-            }
-    }
-    
 }
-
-
 
 
 
