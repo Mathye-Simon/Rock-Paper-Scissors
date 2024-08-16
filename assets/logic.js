@@ -5,30 +5,30 @@ function getComputerChoice () {
     // this function creates a random number and then creates a move for the computer based on that- 
     // -random number. 3 Moves in total
     if(randomNumber <= 0.33){
-        computerMove = 'paper'
+        computerMove = 'Paper'
         return computerMove
     }
     else if (randomNumber >0.33 && randomNumber <= 0.66) {
-        computerMove = 'rock'
+        computerMove = 'Rock'
         return computerMove}
     else if (randomNumber > 0.66) {
-        computerMove = 'scissors'
+        computerMove = 'Scissors'
         return computerMove
     }
 }
 
 possibleOutcomes = 
-    [{move: 'paper',
-        win: 'rock',
-        loss: 'scissors'
+    [{move: 'Paper',
+        win: 'Rock',
+        loss: 'Scissors'
     }, 
-    {move: 'scissors',
-        win: 'paper',
-        loss: 'rock'
+    {move: 'Scissors',
+        win: 'Paper',
+        loss: 'Rock'
     },
-    {move: 'rock',
-        win: 'scissors',
-        loss: 'paper'
+    {move: 'Rock',
+        win: 'Scissors',
+        loss: 'Paper'
     }]
 
 
@@ -37,16 +37,17 @@ let playerMove=''// int
 let buttons = document.querySelectorAll('button')
 buttons.forEach((button) => {
 button.addEventListener('click',(event) => {
-    if (event.target.id == 'scissors') {
-        playerMove = 'scissors'
+    if (event.target.id == 'Scissors') {
+        playerMove = 'Scissors'
     }
-    else if (event.target.id == 'rock') {
-        playerMove = 'rock'
+    else if (event.target.id == 'Rock') {
+        playerMove = 'Rock'
     }
-    else if (event.target.id == 'paper') {
-        playerMove = 'paper'
+    else if (event.target.id == 'Paper') {
+        playerMove = 'Paper'
     }
-    playMatch(playerMove)
+    let computerMove = getComputerChoice()
+    playMatch(playerMove,computerMove)
 })
     
 })
@@ -58,40 +59,58 @@ button.addEventListener('click',(event) => {
 playerScore = 0;
 computerScore = 0;
 
-function playMatch(playerMove) {
+function playMatch(playerMove, computerMove) {
     // init
     let result = ''
     let paragraph = document.createElement('p')
     const div = document.querySelector('#displayResult')
     const displayPlayerScore = document.querySelector('#playerScore')
     const displayComputerScore = document.querySelector('#computerScore')
-
+  
     // loops until it finds playermove inside one of the objects
     for (let index = 0; index < possibleOutcomes.length; index++) {
-        if (playerMove == getComputerChoice()) {  
-            result ='Tie' /*When moves are the same*/
+        if (playerMove == computerMove) {  
+            result = `Result: ${playerMove} and ${computerMove}. Its a tie!` /*When moves are the same*/
             div.textContent = result
             displayPlayerScore.textContent = `Player Score:${playerScore}`
-            displayComputerScore.textContent = `Player Score:${computerScore}`
+            displayComputerScore.textContent = `Computer Score:${computerScore}`
         }
         if (playerMove == possibleOutcomes[index].move) {
-            if (getComputerChoice() == possibleOutcomes[index].win){
-                result = 'Player wins'
+            if (computerMove == possibleOutcomes[index].win){
+                result = `Result: ${playerMove} beats ${computerMove}. You win :)`
                 playerScore += 1
                 div.textContent = result
                 displayPlayerScore.textContent = `Player Score:${playerScore}`
-                displayComputerScore.textContent = `Player Score:${computerScore}`
+                displayComputerScore.textContent = `Computer Score:${computerScore}`
 
                 
             }
-            else if (getComputerChoice() == possibleOutcomes[index].loss) {
-                result = 'Computer wins'
+            else if (computerMove == possibleOutcomes[index].loss) {
+                result = `Result: ${playerMove} does not beat ${computerMove}. You lose :(`
                 computerScore +=1
                 div.textContent = result
-                displayComputerScore.textContent = `Player Score:${computerScore}`
+                displayComputerScore.textContent = `Computer Score:${computerScore}`
                 displayPlayerScore.textContent = `Player Score:${playerScore}`
             }
+
+
         }
+
+
+            // who wins
+            if (playerScore >= 5) {
+                console.log('player wins')
+                playerScore = 0
+                computerScore = 0
+                alert('Game set!! You Win! Awesome')
+            }
+
+            if (computerScore >= 5) {
+                console.log('Computer wins')
+                playerScore = 0
+                computerScore = 0
+                alert('Game set!! Computer Wins! You..lose..')
+            }
     }
     
 }
