@@ -17,15 +17,26 @@ function getComputerChoice () {
     }
 }
 
-let playerScore = 0;
-let computerScore = 0;
+possibleOutcomes = 
+    [{move: 'paper',
+        win: 'rock',
+        loss: 'scissors'
+    }, 
+    {move: 'scissors',
+        win: 'paper',
+        loss: 'rock'
+    },
+    {move: 'rock',
+        win: 'scissors',
+        loss: 'paper'
+    }]
 
-// determine playerMove and handle event
+
+let playerMove=''// int
+// getting playermove based on the id of the button clicked
 let buttons = document.querySelectorAll('button')
 buttons.forEach((button) => {
-    button.addEventListener('click', handleEvent)
-})
-function handleEvent (event) {
+button.addEventListener('click',(event) => {
     if (event.target.id == 'scissors') {
         playerMove = 'scissors'
     }
@@ -35,85 +46,58 @@ function handleEvent (event) {
     else if (event.target.id == 'paper') {
         playerMove = 'paper'
     }
-
-    // get div to display result
-    let displayResult = document.querySelector('#displayResult')
-
-    // compare moves
-    computerMove = getComputerChoice()
-    let result = "";
+    playMatch(playerMove)
+})
     
-    // when moves are the same the score doesnt increase or decrease, (optional)
-    if (playerMove == computerMove) {
+})
+        
+    
 
-        playerScore += 0;
-        computerScore += 0;
-        result = `Player move was: ${playerMove} and Computer move
-        was: ${computerMove}. The result is: A Tie! The score for
-        player is ${playerScore} and for computer is ${computerScore}`
-        displayResult.textContent = result
-    }
-    //  When playerMove = rock it checks whether computerMove = paper or scissors then runs according to computerMove!
-    else if (playerMove == "rock"){
 
-        if (computerMove == "paper") {
-            computerScore += 1
-            result = `Player move was: ${playerMove} and Computer move
-            was: ${computerMove}. The result is: Computer wins! The score 
-            for player is ${playerScore} and for computer is ${computerScore}`
-            displayResult.textContent = result
+// Initialized outside function scope to avoid reseting each time
+playerScore = 0;
+computerScore = 0;
+
+function playMatch(playerMove) {
+    // init
+    let result = ''
+    let paragraph = document.createElement('p')
+    const div = document.querySelector('#displayResult')
+    const displayPlayerScore = document.querySelector('#playerScore')
+    const displayComputerScore = document.querySelector('#computerScore')
+
+    // loops until it finds playermove inside one of the objects
+    for (let index = 0; index < possibleOutcomes.length; index++) {
+        if (playerMove == getComputerChoice()) {  
+            result ='Tie' /*When moves are the same*/
+            div.textContent = result
+            displayPlayerScore.textContent = `Player Score:${playerScore}`
+            displayComputerScore.textContent = `Player Score:${computerScore}`
         }
+        if (playerMove == possibleOutcomes[index].move) {
+            if (getComputerChoice() == possibleOutcomes[index].win){
+                result = 'Player wins'
+                playerScore += 1
+                div.textContent = result
+                displayPlayerScore.textContent = `Player Score:${playerScore}`
+                displayComputerScore.textContent = `Player Score:${computerScore}`
 
-        else if (computerMove == "scissors") {
-
-            playerScore += 1
-            result = `Player move was: ${playerMove} and Computer
-            move was: ${computerMove}. The result is: Player wins!
-            The score for player is ${playerScore} and for computer
-            is ${computerScore}`
-            displayResult.textContent = result
-        }
-    }
-// When playerMove = paper it checks whether computerMove = rock or scissors then runs according to computerMove!
-    else if (playerMove == "paper"){
-
-        if (computerMove == "rock") {
-            playerScore += 1
-            result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Player wins! The score for player is ${playerScore} and for computer is ${computerScore}`
-            displayResult.textContent = result
-        }
-        else if (computerMove == "scissors") {
-            computerScore+= 1
-            result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Computer wins! The score for player is ${playerScore} and for computer is ${computerScore}`
-            displayResult.textContent = result
-        }
-    }
-
-    // When playerMove = scissors it checks whether computerMove = rock or paper then runs according to computerMove!
-    else if (playerMove == "scissors"){
-
-        if (computerMove == "rock") {
-            computerScore += 1
-        result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Computer wins! The score for player is ${playerScore} and for computer is ${computerScore}`
-        displayResult.textContent = result
-        }
-        else if (computerMove == "paper") {
-            playerScore += 1
-            result = `Player move was: ${playerMove} and Computer move was: ${computerMove}. The result is: Player wins! The score for player is ${playerScore} and for computer is ${computerScore}`
-            displayResult.textContent = result
+                
+            }
+            else if (getComputerChoice() == possibleOutcomes[index].loss) {
+                result = 'Computer wins'
+                computerScore +=1
+                div.textContent = result
+                displayComputerScore.textContent = `Player Score:${computerScore}`
+                displayPlayerScore.textContent = `Player Score:${playerScore}`
+            }
         }
     }
     
-    // declare winner
-    if (playerScore >= 5) {
-        displayResult.textContent = 'player wins'
-        playerScore = 0
-        computerScore = 0}
-    else if (playerScore >= 5) {
-        displayResult.textContent = 'computer wins'
-        playerScore = 0
-        computerScore = 0}
 }
+
+
+
 
 
 

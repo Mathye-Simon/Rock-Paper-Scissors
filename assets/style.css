@@ -19,7 +19,12 @@ h1 {
     text-align: center;
 
 }
-
+div {
+    text-align: center;
+}
+p {
+    text-align: center;
+}
 button {
     font-size: 20px;
     padding: 10px;
